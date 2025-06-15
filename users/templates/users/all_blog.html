@@ -1,0 +1,159 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}{{ username }}'s Blogs{% endblock %}
+
+
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/view_blog.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+          <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'patent:patent_brief' %}'">Patent</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'trademark:trademark_brief' %}'">Trademark</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Other Services</button>
+                <div class="options">
+                    <button aria-label="Copyright" onclick="window.location.href='{% url 'copyright:copyright_brief' %}'">Copyright</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:all_blogs' %}'">Blog</button>
+                    <button aria-label="Sldc" onclick="window.location.href='{% url 'sldc:sldc_brief' %}'">SICLD</button>
+                    <button aria-label="GI" onclick="window.location.href='{% url 'GI:GI_brief' %}'">GI</button>
+                    <button aria-label="design" onclick="window.location.href='{% url 'design:design_brief' %}'">Design</button>
+                    </div>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Blog</button>
+                <div class="options">
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">Write blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:manage_blog' %}'">Manage blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:view_blog' %}'">View blog</button>
+                    
+                  </div>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >About us</button>
+                <div class="options" id="menu">
+                    <button onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+                    <button onclick="window.location.href='{% url 'users:contact_us' %}'">Contact us</button>
+                    <button onclick="window.location.href='{% url 'users:termsconditions' %}'">Terms & conditions</button>
+                </div>
+            </div>
+            
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="blur">
+        <div class="side-container">
+            <div class="center">
+            <h1>view blogs</h1>
+            <p style="color: white; margin: 2%;">In	singly	linked	lists	and	doubly	linked	lists,	the	end	of	lists	are	indicated	with	NULL	value.	But
+        circular	linked	lists	do	not	have	ends.</p>
+            <hr style="margin: 2%;">
+            <br>
+        <form method="GET" action="{% url 'users:all_blogs' %}">
+            <input type="text" name="q" placeholder="Search blogs..." value="{{ query }}" style="width: 55%;height: 25px; border-radius: 6pc; padding: 1%; border-width: 0cap; background-color: hsl(208, 100%, 97%); opacity: 60%; margin: 2%;">
+            
+            <button type="submit" class="expandable" style="width: 25%; margin-top: 1%;">Search</button>
+        </form>
+</div>
+        </div>
+
+        
+
+        </div>
+        
+        
+
+    </div>
+
+
+
+    <div class="recent-blogs">
+        <h2>Recent Blogs</h2>
+        <div class="blog-list" id="results">
+            
+            {% for info in Blogs %}
+          
+            <div class="blog-item">
+                <h3 onclick="window.location.href='{% url 'users:view_all' info.id %}'">{{info.title}}</h3>
+                <p>{{info.user.username}}</p>
+            </div>
+            
+
+            {% empty %}
+            {% for info in all %}
+    <div class="blog-item">
+                <h3 onclick="window.location.href='{% url 'users:view_all' info.id %}'">{{info.title}}</h3>
+                <p>{{info.user.username}}</p>
+            </div>
+            {%endfor%}
+
+            {% endfor %}
+        </div>
+        
+    </div>
+
+<script>
+       
+function searchBlogs() {
+    let query = document.getElementById("searchBox").value;
+    let resultsContainer = document.getElementById("results");
+    
+    fetch(`/search?query=${query}`)
+    .then(response => response.json())
+    .then(data => {
+        resultsContainer.innerHTML = "";
+        if (data.length > 0) {
+            resultsContainer.style.display = "block";
+            data.forEach(blog => {
+                let div = document.createElement("div");
+                div.className = "blog-item";
+                div.innerHTML = `<h3 onclick="window.location.href='/users/view_all/${blog.id}'">${blog.title}</h3>`;
+                resultsContainer.appendChild(div);
+            });
+        } else {
+            resultsContainer.style.display = "none";
+        }
+    })
+    .catch(error => console.error("Error fetching blogs:", error));
+}
+
+
+// Hide results when clicking outside the search box
+document.addEventListener("click", (e) => {
+    if (!document.querySelector(".search-container").contains(e.target)) {
+        document.getElementById("results").style.display = "none";
+    }
+});
+    </script>
+{% endblock %}
+

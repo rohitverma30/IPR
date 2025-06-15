@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background:var(--background-color);
+    margin: 0;
+    padding: 0;
+
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.blog-titlearea,
+.blog-textarea {
+    width: 100%; /* Fully covers the container */
+    max-width: 100%; /* Ensures it doesn’t overflow */
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    resize: vertical;
+    margin: 20px 0;
+    box-sizing: border-box;
+    background-size: cover;
+}
+
+.blog-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    
+    align-items: center;
+    background-color: var(--button-color);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 6, 22, 0.1);
+    text-align: left;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+
+h1 {
+    font-family: 'CustomFont', serif;
+    margin: 3% auto;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 1.2px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+button.btn {
+    width: 20%;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button.btn:hover {
+    background-color: var(--hover-color);
+    color: var(--secondary-color);
+    transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+h1 {
+        font-size: 1.8rem;
+    }
+    p{
+      font-size: .9rem;
+    }
+    .blog-container {
+        width: 90%;
+    }
+
+    .blog-titlearea, .blog-textarea {
+        width: 90%;
+    }
+
+    button.btn {
+        width: 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-titlearea, .blog-textarea {
+        width: 95%;
+    }
+
+    button.btn {
+        width: 60%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

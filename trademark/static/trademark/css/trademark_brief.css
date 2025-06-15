@@ -1,0 +1,346 @@
+
+body{
+
+color: #f0f0f0;
+text-align: justify;
+
+}
+.placard-section {
+    padding: 40px;
+    text-align: center;
+    justify-content: center;
+}
+
+.placard-section h2 {
+    color: var(--primary-color);
+}
+
+/* Centering placards */
+.placardset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.placards {
+    align-self: center;
+    background-color: rgba(223, 223, 223, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    transition: transform 0.3s;
+}
+
+.placards:hover {
+    transform: scale(1.05);
+}
+
+.placards img {
+    border-radius: 100%;
+    height: fit-content;
+    width: 50%;
+}
+
+header img {
+    width: 100%;
+    height: auto;
+}
+
+
+.side-container {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    width: 50%;
+    vertical-align: middle;
+    padding-top: 5%;
+    border-radius: 5%;
+    margin-top: 2.5%;
+    margin: 1%;
+}
+
+
+.side {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    vertical-align: top;
+    flex-direction: column;
+    resize: horizontal;
+}
+.side img{
+width: 100%;
+margin: 0%;
+}
+.placard {
+
+    padding: 15px;
+    margin-top: 10px;
+    text-align: center;
+    width: 50%;
+
+    margin: 2.5%;
+
+    display: flex;
+    flex-direction: row;
+}
+.placard p{
+    margin: 1%;
+    width: 100%;
+    color: #ffffff;
+    justify-content: center;
+    width: fit-content;
+}
+.placard img{
+    width: 50%;
+    height: fit-content;
+    resize: none;
+}
+.center {
+    width: 75%;
+    margin-top: 2.5%;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5%;
+    vertical-align: middle;
+}
+
+
+
+    * {box-sizing: border-box}
+body {font-family: 'Times New Roman', Times, serif; margin:0}
+
+img {
+    width: 100%;
+    margin-top: 3%;
+    
+}
+
+h1 {
+            margin:2%;
+            margin-top: 3%;
+            padding-top: 5%;
+            text-align: left;
+            font-family: 'CustomFont', serif;
+            font-size: 3.5rem;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            filter: blur(0);
+        }
+
+h2 {
+            margin:2%;
+            margin-top: 3%;
+            padding-top: 5%;
+            text-align: center;
+            font-family: 'CustomFont', serif;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            filter: blur(0);
+        }
+h3 {
+            margin:2%;
+            margin-top: 3%;
+            padding-top: 5%;
+            text-align: left;
+            font-family: 'CustomFont', serif;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            filter: blur(0);
+        }
+
+
+
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .card {
+            background:var(--primary-color);
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: justify;
+            margin: 1%;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+.container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('/static/users/img/trademark_main3.jpg');
+    background-size: cover;
+    width: auto;
+    height: 600px;
+    z-index: -1;
+
+}
+
+.end {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 5%;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 0%;
+    
+}
+
+.blur{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: #ffeeee51;
+    z-index: 1;
+    opacity: 100%;
+    width: 500px;
+    shape-margin: 10%;
+    border-radius: 2%;
+    width: 80%;
+    margin-top: 2.5%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    height: auto;
+
+}
+
+p{
+            
+            margin: 2%;
+            text-align: justify;
+            color: white;
+            letter-spacing: 1.5px;
+            filter: blur(0);
+}
+
+.side-img{
+    position: absolute;
+    right:-12.5% ;
+    bottom: -27.5%;
+    width: 60%;
+}
+.mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    width: 100%;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.mid hr {
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+}
+
+.mid p {
+    width: 100%;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+
+@media (max-width: 1024px) {
+ body{
+      overflow-x: hidden;
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .placardset {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .blur {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+     body{
+      overflow-x: hidden;
+    }
+    .placard-section {
+        padding: 20px;
+    }
+    h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+    .side-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .placard img {
+        width: 100%;
+    }
+    .side-img{
+        visibility: hidden;
+    }
+    .top{
+        flex-direction: column;
+    }
+    .menu{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+     body{
+      overflow-x: hidden;
+    }
+    .menu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .blur {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+h1 {
+        font-size: 1.8rem;
+    }
+    p{
+      font-size: .9rem;
+    }
+    
+    .side-img{
+        visibility: hidden;
+    }
+    .top{
+        display: flex;
+        flex-direction: column;
+    }
+}

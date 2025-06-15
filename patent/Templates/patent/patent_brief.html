@@ -1,0 +1,259 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Patent{% endblock %}
+
+
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'patent/css/patent_brief.css' %}">
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable" aria-label="Home" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="new patent" onclick="window.location.href='{% url 'patent:patent_submission' %}'">new patent</button>
+                    <button aria-label="view patents" onclick="window.location.href='{% url 'patent:view_patents' %}'">view patents</button>
+                    <button aria-label="submissions" onclick="window.location.href='{% url 'patent:submission_list' %}'">Submissions</button>
+                    
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<!--
+<div class="image-container">
+        {% if random_image %}
+        <img src="{{ random_image.image.url }}" alt="Random Image">
+    {% else %}
+       <img src="{% static 'patent\img\random-image-related (1).png' %}" alt="Main Image" class="main-image">
+    {% endif %}
+        
+        <h1 class="top-right-heading">Your Heading</h1>
+        <button class="bottom-left-button">
+            <img src="{% static 'patent\img\scroll.png' %}" alt="Button Image">
+        </button>
+    </div>
+    
+
+        <section id="patents">
+            <h1>Understanding Patents</h1>
+            <p>xyz working</p>
+        </section>
+
+-->
+        <div class="container">
+  
+<div class="image-container">
+        {% if random_image %}
+        <img src="{{ random_image.image.url }}" alt="Random Image">
+    {% else %}
+       <img src="{% static 'patent\img\random-image-related (1).png' %}" alt="Main Image" class="main-image">
+    {% endif %}
+    
+        
+    </div>
+   
+        </div>
+
+<div class="container">
+    
+        
+        <section class="center">
+            <div class="vertical-content">
+                <h1>Understanding patents</h1>
+                <p>Patent filing is a crucial step in safeguarding your inventions and ensuring that your intellectual property rights are legally protected. By securing a patent, inventors gain the exclusive right to make, use, sell, or license their innovation for a set period, typically 20 years. This protection not only prevents unauthorized use but also enhances the commercial value of the invention.
+The patent filing process begins with a thorough patentability search to determine if the invention is novel and non-obvious. Once the idea is confirmed to be patentable, the next step is drafting a detailed patent application, which includes technical descriptions, claims, and drawings. This application is then submitted to the relevant patent office depending on the jurisdiction.
+After filing, applicants may request early publication and must respond to any examination reports or objections raised by the patent office. Once the application satisfies all legal requirements, the patent is granted, providing legal recognition and protection.
+Timely and strategic patent filing is essential for inventors, start-ups, and businesses aiming to secure their market position and attract investment. Professional guidance can streamline the process and increase the chances of successful patent grant.
+</p>
+                
+            </div>
+        </section>
+        <div class="side-container">
+            <aside class="side"><img src="{% static 'users/img/justice.jpg' %}">
+            <p>Want to file a patent</p>
+            </aside>
+            <button class="expandable" onclick="window.location.href='{% url 'patent:patent_submission' %}'">File for your patent</button>
+        </div>
+            </div>
+    </div>
+    <div  class="mid-top">
+        <h2 >Steps for patent application</h2>
+<div  >
+<div class="mid">
+    
+<section class="scroll-wrapper">
+            <div class="scroll-container">
+                <div class="placardset">
+                    <div class="placards">
+                        <a href="#step1">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 1 (a): Signing a Non-Disclosure Agreement (NDA) with us</p>
+                        <p>Step 1 (b): Filling Invention Disclosure form</p>
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="placards" >
+                        <a href="#step2">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 2: Patentability search</p>
+                        </a>
+                        
+                        
+                    </div>
+                    <div class="placards" >
+                        <a href="#step3">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 3: Drafting and filing complete patent application</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="placards">
+                        <a  href="#step4">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 4:  Filing Patent application</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="placards" >
+                        <a href="#step5">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 5: Request for Examination  </p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="placards" >
+                        <a href="#step6">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 6: Responding to objections in the examination report</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="placards" >
+                        <a href="#step7">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 7: Respond to objections</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="placards" >
+                        <a href="#step8">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 8: Grant of patent</p>
+                        </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+   <hr style="background-color: #d9edf7; margin:3%">
+    </div>
+     <h2 style="margin: 3%;">Steps for patent application
+</h2>
+
+
+        
+     <p id="step1">Step 1 a: Signing a Non-Disclosure Agreement (NDA) with us
+A non-disclosure agreement (NDA) with your patent agent/attorney or IP firm protects the confidentiality of your invention.
+Please find the NDA attached below. Fill in the Inventor(s)' full name and communication address, sign, and email a copy to us to begin your patent filing.
+	</p>
+
+    <p id="step1">Step 1 b: Filling Invention Disclosure form
+By signing the NDA, you can then proceed to share all the specifics of your invention using the "Invention Disclosure Questionnaire" linked below. This is where you'll provide a full account of your invention, detailing its benefits, unique elements, and illustrating its functionality with diagrams and flowcharts. Please be as detailed as possible.
+</p>
+
+<p id="step2">Step 2: Patentability search (optional step)
+After you submit your invention disclosure, we'll conduct a patentability (novelty) search. This search helps us determine if your invention is new, a requirement for patenting. The search results will guide our decision on whether to proceed with filing.
+</p>
+<p id="step2">
+Stage 2 a: Decide to file patent application
+Reviewing the patentability search report and the identified prior art will enable you to decide whether to proceed with patent filing.
+For your invention to be patentable, it must demonstrate an "inventive step" compared to existing prior art. This inventive step is established if your invention shows either a 'technical advance' or 'economic significance' (or both) over what already exists. Once you decide to proceed with patent filing, the next stage involves writing the patent application, also known as patent drafting.
+</p>
+
+<p id="step3">
+Step 3: Drafting and filing complete patent application:
+If the patentability search confirms your invention is novel, the next step is to draft the patent application, focusing on the inventive (novel) features of your invention.
+Note: If we prepare and file a Provisional Patent Application to establish an early priority date, a Complete Patent Application must be filed within 12 months of the provisional filing date.
+</p>
+
+<p id="step4">
+Step 4:  Filing Patent application  
+Once you approve the drafted patent application's scope and technical details, you can file it by submitting the required forms and the applicable fee (₹1600 or ₹8000 based on applicant type) to the patent office.
+If you do not request early publication (by paying the required fee), your patent application will be published automatically after 18 months from the filing date.
+<br><b>
+Request for early publication
+Filing for early publication will result in your patent application being published within one month and costs an official fee of ₹2500/-.
+
+</b></p>
+
+<p id="step5">
+Step 5: Request for Examination  
+The fee for requesting examination of your patent application is ₹4,000 or ₹20,000 (depending on applicant type). This request, using the specified form and fee, must be submitted to the Indian Patent Office within 48 months of filing to initiate the examination process.
+</p>
+
+<p id="step6">
+Step 6: Responding to objections in the examination report
+The "First Examination Report" (FER), issued by the examiner to the controller, typically identifies prior art (documents existing before your filing date) that are similar to your claimed invention. This report is then sent to you, the patent applicant, who needs to respond to address the examiner's objections and fulfill prosecution requirements.
+</p>
+
+<p id="step7">
+Step 7: Respond to objections
+Expect to receive objections in your patent examination report. The best approach is to analyze it with a patent agent and prepare a detailed response to each point.
+Responding to the examination report is the inventor's chance to demonstrate their invention's novelty and inventive step over cited prior art, often with a patent agent's help. The goal is to convince the controller of patentability. If successful, the patent is granted after one or two examination cycles or hearings. Professional fees for these responses vary based on the number and complexity of objections.
+</p>
+
+<p id="step8">
+Step 8: Grant of patent:
+When all examination report objections are resolved, the patent is granted.
+</p>
+
+ <br>
+</div>
+    
+   <div class="headline">
+        <div class="head-text">Note Government fees mentioned are for Natural persons or Start-ups or Small entities or educational institutions.</div>
+    </div>
+    </div>   
+   
+{% endblock %}
+

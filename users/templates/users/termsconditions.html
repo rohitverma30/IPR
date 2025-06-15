@@ -1,0 +1,128 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block title %}Terms and conditions{% endblock %}
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/termsconditions.css' %}">
+
+
+        <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}';">
+        </div>
+        <div class="menu">
+          <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'patent:patent_brief' %}';">Patent</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'copyright:copyright_brief' %}';">Copyright</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:view_blog' %}';">Blog</button>
+                    <button aria-label="Sldc" onclick="window.location.href='{% url 'sldc:sldc_brief' %}';">SLDC</button>
+                    <button aria-label="GI" onclick="window.location.href='{% url 'GI:GI_brief' %}';">GI</button>
+                    <button aria-label="design" onclick="window.location.href='{% url 'design:design_brief' %}';">Design</button>
+                    <button aria-label="Trademark" onclick="window.location.href='{% url 'trademark:trademark_brief' %}';">Trademark</button>
+                </div>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Blog</button>
+                <div class="options">
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:write_blog' %}';">Write blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:manage_blog' %}';">Manage blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:view_blog' %}';">View blog</button>
+                    
+                  </div>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:contact_us' %}';">Contact us</button>
+            </div>
+        
+            
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endblock %}
+    {% block content %}
+    <h2>Terms & conditions</h2>
+
+<div class="para">
+    <hr>
+    <h3>Policy on Data Security</h3>
+    <p>
+    
+<br>1.	Agastya IPR does not have access to your data
+<br>2.	Agastya IPR does not sell or share your data with any third party
+<br>3.	Agastya IPR follows stringent policies so that data isn’t compromised at any step
+<br>4.	Your data is for your eyes only
+    </p>
+<h3>
+Terms of use
+</h3>
+<p>
+The use of this site and the content contained therein is governed by the Terms of Service. All Users/Organizations who are registered with Agastya IPR or the visitors of this website are expected to adhere to the terms of service of this Website. When any user uses this site, then they acknowledge to have read the Terms of Service and accept that they will be bounded by the terms hereof and such terms as may be modified from time to time.
+<br>The contents as in papers, reports, newsletter, press and news releases, announcements, event and training information, best practices or any other such information which posted on the website including the details of Agastya IPR members, Agastya IPR program and initiatives etc. of this Website may not be distributed, modified, reproduced, or used, in whole or in part, without the prior written consent of Agastya IPR, except that you may download the content or test from this system to any single computer, provided, you keep intact all copyright, trademark, and other proprietary notices.
+<br>The Website is controlled and operated by Agastya IPR and it makes no representation that materials in the Site are appropriate or available for use in other locations.
+<br>Agastya IPR trademarks and copyrights may not be used in connection with any product or service that is not Agastya IPR, in any manner that is likely to cause confusion among customers, or in any manner that disparages or discredits Agastya IPR. All other trademarks and logos used in this system are the trademarks, or logos of their respective owners. Users gain no right to use any representations of Agastya IPR or any other entity by virtue of use of this system.
+<br>Unless otherwise indicated in this system, including the Privacy Policy or in connection with one of the services, any communications or material of any kind that is transmitted through this Site (excluding personally identifiable information of individuals, including reports) and other statistical information, will be treated as non-confidential and non-proprietary. Use of personally identifiable information of an individual is set forth in the Privacy Policy.
+<br>Agastya IPR reserves the right to modify, suspend / cancel, or discontinue any or all sections, or service at any time without notice. It also reserves the right to make modifications and alterations in the information contained on the site without notice.
+<br>The Agastya IPR Members login is for the reference of only registered Agastya IPR Member Companies, registered educational institutes, counsellors and Agastya IPR users. Agastya IPR reserves the right to discontinue the member login on account of non-payment of membership fee or violation of ‘code of conduct’ set by itself.
+<br>Agastya IPR reserves the right to modify the terms of use of any service without any liability. Agastya IPR reserves the right to take all measures necessary to prevent access to any service or termination of service if the terms of use are not complied with or are contravened or there is any violation of copyright, trademark or other proprietary right.
+
+</p>
+
+</div>
+<div class="para">
+<h3>
+Refund/Cancellation Policy for Agastya IPR
+</h3>
+<p>
+<br>No refund of the counselling/consultation fee shall be issued once the appointment has been booked for the patient. We reserve the right to change the refund & cancellation policy at any time without prior notice. In the event that any changes are made, the revised policy shall be posted on this website immediately. 
+If in case of any dispute arising out of this agreement, the same shall be settled, in the Courts of Delhi jurisdiction only. For any query please <a href="{% url 'users:contact_us' %}"> contact us</a>
+
+<br>As a user of the Site, you agree not to:
+<br>1.	systematically retrieve data or other content from the Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.
+<br>2.	make any unauthorized use of the Site, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email, or creating user accounts by automated means or under false pretenses.
+<br>3.	use a buying agent or purchasing agent to make purchases on the Site.
+<br>4.	use the Site to advertise or offer to sell goods and services.
+<br>5.	circumvent, disable, or otherwise interfere with security-related features of the Site, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Site and/or the Content contained therein.
+<br>6.	engage in unauthorized framing of or linking to the Site.
+<br>7.	trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords;
+<br>8.	make improper use of our support services or submit false reports of abuse or misconduct.
+<br>9.	engage in any automated use of the system, such as using scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction tools.
+<br>10.	interfere with, disrupt, or create an undue burden on the Site or the networks or services connected to the Site.
+<br>11.	attempt to impersonate another user or person or use the username of another user.
+<br>12.	sell or otherwise transfer your profile.
+<br>13.	use any information obtained from the Site in order to harass, abuse, or harm another person.
+<br>14.	use the Site as part of any effort to compete with us or otherwise use the Site and/or the Content for any revenue-generating endeavor or commercial enterprise.
+<br>15.	decipher, decompile, disassemble, or reverse engineer any of the software comprising or in any way making up a part of the Site.
+<br>16.	attempt to bypass any measures of the Site designed to prevent or restrict access to the Site, or any portion of the Site.
+<br>17.	harass, annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Site to you.
+<br>18.	delete the copyright or other proprietary rights notice from any Content.
+<br>19.	copy or adapt the Site’s software, including but not limited to Flash, PHP, HTML, JavaScript, or other code.
+<br>20.	upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material, including excessive use of capital letters and spamming (continuous posting of repetitive text), that interferes with any party’s uninterrupted use and enjoyment of the Site or modifies, impairs, disrupts, alters, or interferes with the use, features, functions, operation, or maintenance of the Site.
+<br>
+If in case of any dispute arising out of this agreement, the same shall be settled, in the Courts of Delhi jurisdiction only. For any query please <a href="{% url 'users:contact_us' %}"> contact us</a>
+
+</p>
+
+</div>
+{% endblock %}

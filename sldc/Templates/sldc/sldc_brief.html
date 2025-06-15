@@ -1,0 +1,231 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}SICLD{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'sldc/css/sldc_brief.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable" aria-label="Home" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="new GI" onclick="window.location.href='{% url 'sldc:sldc_submission' %}'">new SICLD</button>
+                    <button aria-label="view GIs" onclick="window.location.href='{% url 'sldc:view_sldcs' %}'">view SICLDs</button>
+                    <button aria-label="submissions" onclick="window.location.href='{% url 'GI:submission_list' %}'">Submissions</button>
+                
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<!--
+<div class="image-container">
+        {% if random_image %}
+        <img src="{{ random_image.image.url }}" alt="Random Image">
+    {% else %}
+       <img src="{% static 'GI\img\random-image-related (1).png' %}" alt="Main Image" class="main-image">
+    {% endif %}
+        
+        <h1 class="top-right-heading">Your Heading</h1>
+        <button class="bottom-left-button">
+            <img src="{% static 'GI\img\scroll.png' %}" alt="Button Image">
+        </button>
+    </div>
+    
+
+        <section id="GIs">
+            <h1>Understanding GIs</h1>
+            <p>xyz working</p>
+        </section>
+
+-->
+
+<div class="container">
+    <div class="blur">
+        <div class="side-container">
+            <div class="center">
+            <h1>Semiconductor Integrated Circuits Layout Design (SICLD)</h1>
+            <p>SICLD stands for Semiconductor Integrated Circuits Layout-Design, which is protected under the Semiconductor Integrated Circuits Layout-Design Act, 2000 in India. This law ensures that the original layout designs of semiconductor chips are safeguarded from unauthorized copying or commercial exploitation.</p>
+            <hr>
+            <br>
+            <button class="expandable" style="width: 35%;" onclick="window.location.href='{% url 'sldc:sldc_submission' %}'">Next</button>
+        </div>
+
+        
+
+        </div>
+        
+        
+
+    </div>
+</div>
+
+
+        <h2 >Steps for SICLD application</h2>
+<div>
+<div class="mid">
+    
+<section class="scroll-wrapper">
+            <div class="scroll-container">
+                <div class="content">
+                    <div class="card" >
+                        <a href="#step1">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 1: Preparation of Application</p>
+                        
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="card" >
+                        <a href="#step2">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 2: Filing the Application</p>
+                        </a>
+                        
+                        
+                    </div>
+                    <div class="card" >
+                        <a href="#step3">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 3: Examination and Acceptance</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card">
+                        <a  href="#step4">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 4: Advertisement of Application</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card" >
+                        <a href="#step5">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 5: Opposition</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card" >
+                        <a href="#step6">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 6: Registration</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card" >
+                        <a href="#step7">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 7: Duration of Registration</p>
+                        </a>
+                        
+                    </div>
+
+                    
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+   <hr style="background-color: #d9edf7; margin:3%">
+    </div>
+    
+    <div style="background-color:var(--primary-color);" class="mid-top">
+     <h2 style="padding: 2.5%; margin: 1%; color: white;">Steps for SICLD application
+</h2>
+
+        
+     <p id="step1">Step 1: Preparation of Application
+<br>•	Prepare Layout Design Representation: Create three sets of drawings or photographs of the mask layout that clearly describe the layout design for which registration is sought. These can also be submitted as a GDS-II file along with the Process Design Kit (PDK) information used. The paper size for physical submissions is typically around 33cm x 20cm.
+<br>•	Prepare Semiconductor Integrated Circuits Samples: Provide four pieces of the semiconductor integrated circuit incorporating the layout design.
+<br>•	Prepare Mask Layout Photographs: Include three sets of photographs of the mask layout used for the fabrication of the semiconductor integrated circuit.
+<br>•	Draft a Declaration: Include a brief description of the layout design and a declaration stating that it has not been commercially exploited anywhere in India or in a convention country. If there has been any commercial exploitation, provide details of the location, date, and year.
+<br>•	Provide Technical Details: Include specifications such as the structure details (e.g., Bipolar, MOS, Bi-MOS, Optical IC) and technical details (e.g., TTL, DTL, CMOS, NMOS, PMOS). Also, mention the functional details (e.g., Logic, Memory, Linear, Microcomputer).
+<br>•	Fill Form LD-1: Complete the Application for Registration of Layout-Design (Form LD-1) with all necessary details, including the title of the layout design, applicant's information, and details of the layout.
+<br>•	Prepare Power of Attorney (if applicable): If the application is filed through an agent, include a Power of Attorney.
+<br>•	Prepare Fee: The registration fee is ₹ 5,000/- to be paid via Demand Draft in favor of "PAO, CGPDTM" payable at Mumbai.
+</p>
+
+    <p id="step2">Step 2: Filing the Application
+<br>•	Submit the completed Form LD-1 along with three sets of the layout design representations, four pieces of the semiconductor integrated circuits, three sets of mask layout photographs, the declaration, technical details, and the Demand Draft for the fee to the Semiconductor Integrated Circuits Layout-Design Registry (SICLDR) in physical form (in triplicate). The registered office is located in New Delhi.
+</p>
+
+<p id="step3">Step 3: Examination and Acceptance
+<br>•	The Registrar will examine the application for compliance with the Act and Rules.
+<br>•	The Registrar may accept the application, refuse it, or accept it with modifications.
+</p>
+
+
+<p id="step4">
+Step 4: Advertisement of Application
+<br>•	Once accepted, the application will be advertised in the Semiconductor Integrated Circuits Layout-Design Journal within 14 days of acceptance.
+</p>
+
+<p id="step5">
+Step 5: Opposition
+<br>•	Any person can file an opposition to the registration of the layout design within three months from the date of advertisement.
+<br>•	The Registrar will serve a copy of the notice of opposition to the applicant.
+<br>•	The applicant needs to file a counter-statement within two months from the date of receipt of the opposition notice.
+<br>•	The Registrar may conduct hearings with both parties.
+</p>
+
+<p id="step6">
+Step 6: Registration
+<br>•	If there is no opposition, or if the opposition is decided in favor of the applicant, the Registrar will register the layout design in the register.
+<br>•	The date of making the application is considered the date of registration.
+<br>•	The Registrar will issue a Registration Certificate to the applicant.
+</p>
+
+<p id="step7">
+Step 7: Duration of Registration
+<br>•	The registration is valid for a period of 10 years from the date of filing the application or from the date of the first commercial exploitation anywhere in India or in a convention country, whichever is earlier.
+</p>
+<br>
+</div>
+    
+<br>    
+    
+  
+        
+
+{% endblock %}
+

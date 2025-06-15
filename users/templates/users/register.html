@@ -1,0 +1,170 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/register.css' %}">
+
+<div class="top">
+    <div class="logo">
+        <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+    </div>
+    <div class="menu">
+        <div class="expandable-container">
+            <button class="expandable">Blogging</button>
+            <div class="options">
+                <button aria-label="Write Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">Write Blog</button>
+                <button aria-label="Manage Blog" onclick="window.location.href='{% url 'users:manage_blog' %}'">Manage Blog</button>
+                <button aria-label="View Blog" onclick="window.location.href='{% url 'users:view_blog' %}'">View Blog</button>
+            </div>
+        </div>
+    
+        <div class="expandable-container">
+            <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+        </div>
+    
+        <div class="expandable-container">
+            <button class="expandable">Log In</button>
+            <div class="options">
+                <button aria-label="Email Login" onclick="window.location.href='{% url 'users:login' %}'">Email Login</button>
+                
+            </div>
+        </div>
+    
+        <div class="expandable-container">
+            <button class="expandable" >User</button>
+            <div class="options" id="menu">
+                <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                 
+                <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block content %}
+<div class="signup-container">
+        
+        <div class="signup">
+            <h1>Sign Up</h1>
+        <hr>
+<form method="post" class="signupform">
+    
+    {% csrf_token %}
+    <p>{{ form.username.label_tag }} {{ form.username }}</p>
+    <p>{{ form.email.label_tag }} {{ form.email }}</p>
+    <p>{{ form.password1.label_tag }} {{ form.password1 }}</p>
+    <p>{{ form.password2.label_tag }} {{ form.password2 }}</p>
+
+    <p>{{ form.role.label_tag }} {{ form.role }}</p>
+
+    <div id="staffRoleSection" style="display: none;">
+  <p>{{ form.staff_role.label_tag }}<br>
+  {{ form.staff_role }}</p>
+</div>
+
+    <div id="keyFieldSection" style="display: none;">
+  <p>{{ form.key.label_tag }}</p>
+  {{ form.key }}
+</div>
+    <p>{{ form.consent_given }} {{ form.consent_given.label_tag }}</p>
+    <p id="text">Terms and Conditions <span id="moreText"><br>The use of this site and the content contained therein is governed by the Terms of Service. All Users/Organizations who are registered with Agastya IPR or the visitors of this website are expected to adhere to the terms of service of this Website. When any user uses this site, then they acknowledge to have read the Terms of Service and accept that they will be bounded by the terms hereof and such terms as may be modified from time to time.<a href="{% url 'users:termsconditions' %}"> visit page</a> </span></p>
+<button onclick="toggleText()" id="toggleBtn" type="button">More</button>
+    <button type="submit" class="signupform_button">Sign Up</button>
+</form>
+        </div>
+
+    </div>
+
+        <script>
+        if ("{{error}}"!=""){
+            alert("{{ error }}");
+        }
+            
+        
+        </script>
+    
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const roleRadios = document.querySelectorAll("input[name='role']");
+  const staffRoleSection = document.getElementById("staffRoleSection");
+
+  function toggleStaffRole() {
+    const selected = document.querySelector("input[name='role']:checked");
+    if (selected && selected.value === "staff") {
+      staffRoleSection.style.display = "block";
+    } else {
+      staffRoleSection.style.display = "none";
+    }
+  }
+
+  // Run on load
+  toggleStaffRole();
+
+  // Watch for changes
+  roleRadios.forEach(radio => {
+    radio.addEventListener("change", toggleStaffRole);
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const roleRadios = document.querySelectorAll("input[name='role']");
+  const staffRoleDiv = document.getElementById("staffRoleSection");
+  const keyFieldDiv = document.getElementById("keyFieldSection");
+
+  function toggleFields() {
+    const selected = document.querySelector("input[name='role']:checked");
+    const role = selected ? selected.value : "";
+
+    // staff_role is ONLY shown for 'staff'
+    staffRoleDiv.style.display = role === "staff" ? "block" : "none";
+
+    // key field is shown for BOTH 'staff' and 'intern'
+    keyFieldDiv.style.display = (role === "staff" || role === "intern") ? "block" : "none";
+  }
+
+  toggleFields(); // run on page load
+  roleRadios.forEach(radio => radio.addEventListener("change", toggleFields));
+});
+
+function toggleText() {
+        var moreText = document.getElementById("moreText");
+        var button = document.getElementById("toggleBtn");
+
+        if (moreText.style.display === "none") {
+            moreText.style.display = "inline";
+            button.innerText = "Less";
+        } else {
+            moreText.style.display = "none";
+            button.innerText = "More";
+        }
+    }
+/*
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js">
+
+    document.getElementById("dataForm").addEventListener("submit", function(event) {
+        event.preventDefault();  // Prevent default form submission
+
+        // Get user input
+        let rawInput = document.getElementById("userInput").value;
+
+        // Sanitize user input using DOMPurify
+        let sanitizedInput = DOMPurify.sanitize(rawInput);
+
+        // Send sanitized input to the Django backend
+        fetch("users/register/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_input: sanitizedInput })
+        });
+    });
+*/
+</script>
+
+
+
+    
+{% endblock %}

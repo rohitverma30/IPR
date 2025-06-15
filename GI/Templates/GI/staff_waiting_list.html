@@ -1,0 +1,84 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Staff page{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'GI/css/GI.css' %}">
+
+<div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable"  onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable"> Services </button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'GI:GI_submission' %}'">new GI</button>
+                    
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+{% endblock %}
+{% block content %}
+
+
+
+    
+<div class="recent-blogs">
+   <h2>waiting list of GIs</h2>
+    <p>Below are the GI submisions</p>
+
+    {% if GIs %}
+    <div class="blog-list">
+        {% for GI in GIs %}
+        <div class="blog-item" onclick="window.location.href='{% url 'GI:staff_waiting' GI.title %}'">
+
+                    <h3>{{ GI.title }}</h3>
+                    <p><strong>Submitted by:</strong> {{ GI.name }} {{ GI.surname }}</p>
+                    <p><strong>Status:</strong>{{GI.status}}</p>
+                    <hr>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No GI submission</p>
+    {% endif %}
+</div>
+        <hr>
+
+
+
+
+{% endblock %}
+

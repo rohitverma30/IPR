@@ -1,0 +1,251 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}GI{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'GI/css/GI_brief.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+
+                    <button aria-label="new GI" onclick="window.location.href='{% url 'GI:GI_submission' %}'">New GI</button>
+                    <button aria-label="view GIs" onclick="window.location.href='{% url 'GI:view_GIs' %}'">View GIs</button>
+                    <button aria-label="submissions" onclick="window.location.href='{% url 'GI:submission_list' %}'">Submissions</button>
+                
+                    
+                </div>
+            </div>
+            
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="center">
+<h1 style="width: fit-content; margin: 1%; text-align: center;">Overview</h1>
+<p style="color: #000000; width: 75%; margin: 1%; text-align: justify; ">
+Geographical Indications (GI) registration in India is a form of intellectual property protection granted to products that originate from a specific geographical region and possess qualities, reputation, or characteristics inherently linked to that location. Examples include Darjeeling Tea, Basmati Rice, Kanchipuram Silk, and Mysore Sandalwood. GI registration ensures the authenticity of such products and protects the cultural and economic interests of local communities.
+</p>
+
+<button class="expandable" style="margin-top: 15%; width: 50%;" onclick="window.location.href='{% url 'GI:GI_submission' %}'"> Register </button>
+</div>
+    <img src="{% static 'users/img/GI_top.jpg' %}" class="main-img">
+</div>
+      <div class="headline">
+        <div class="head-text">LATEST Agastya IPR  Agastya IPR  Agastya IPR  Agastya IPR  Agastya IPR</div>
+    </div>
+
+<div class="container">
+    <img src="{% static 'copyright/img/court2.jpg' %}" class="left-img">
+    <div class="center">
+    <h1>Understanding GI's</h1>
+    <p style="color: #000; text-align:justify;">Under the Geographical Indications of Goods (Registration and Protection) Act, 1999, the registration process involves filing an application with the GI Registry in Chennai. The application must clearly define the geographical area, the uniqueness of the product, and the traditional knowledge involved. Once examined and approved, the GI is published in the GI Journal for public opposition. If uncontested, the GI is registered for an initial period of 10 years, renewable indefinitely.
+GI registration grants exclusive rights to authorized users, prevents unauthorized use or imitation, and helps build global recognition for indigenous products. It empowers rural artisans, farmers, and producers by enhancing product value and encouraging sustainable economic development.
+For communities and businesses tied to traditional, region-specific goods, GI registration is a powerful tool to protect heritage and boost market potential.
+	</p>
+        <button class="expandable" style="margin-top: 15%; width: 50%; justify-content: center; margin-left: 25%;" onclick="window.location.href='{% url 'GI:GI_submission' %}'"> Register </button>
+    </div>
+    <img src="{% static 'copyright/img/court3.jpg' %}" class="right-img">
+</div>
+
+<hr style="margin: 5%;">
+
+<div>
+<div class="mid">
+         <h2 style="margin: 3%; padding: 0%; color: #333;">Steps for GI application
+</h2>
+<section class="scroll-wrapper">
+            <div class="scroll-container">
+                <div class="content">
+                    <div class="card" >
+                        <a href="#step1">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 1: Filing of Application</p>
+                        
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="card" >
+                        <a href="#step2">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 2 & 3: Preliminary Scrutiny and Examination</p>
+                        </a>
+                        
+                        
+                    </div>
+                    <div class="card" >
+                        <a href="#step4">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 4: Show Cause Notice</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card">
+                        <a  href="#step5">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 5: Publication in the Geographical Indications Journal</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card" >
+                        <a href="#step6">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 6: Opposition to Registration  </p>
+                        </a>
+                        
+                    </div>
+
+                    
+
+                    <div class="card" >
+                        <a href="#step7">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 7: Registration</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="card" >
+                        <a href="#step8">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 8: Renewal</p>
+                        </a>
+                        
+                    </div>
+
+
+                    <div class="card" >
+                        <a href="#step9">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 9: Additional Protection to Notified Goods</p>
+                        </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+   <hr style="background-color: #d9edf7; margin:3%">
+    </div>
+    
+    <div style="background-color:var(--primary-color);" class="mid-top">
+     <h2 style="margin: 3%;">Steps for GI application
+</h2>
+
+        
+     <p id="step1">Step 1: Filing of Application
+<br>•	Eligibility Check: Ensure the indication falls under the definition of a GI as per Section 2(1)(e) of the Geographical Indications of Goods (Registration and Protection) Act, 1999.
+<br>•	Applicant Representation: An association of persons, producers, organization, or authority representing the interests of the producers of the concerned goods must file the application. They need to provide an affidavit stating how they represent these interests.
+<br>•	Application in Triplicate: The application must be submitted in three copies.
+<br>•	Statement of Case: A detailed statement explaining the GI, the goods, their qualities, reputation, and the link to the geographical area.
+<br>•	Special Characteristics: Details of the specific characteristics of the product and how those standards are maintained due to the geographical origin (e.g., climate, soil, traditional methods).
+<br>•	Map of the Region: Three certified copies of the map clearly indicating the geographical territory to which the GI relates.
+<br>•	Inspection Structure: Details of any existing inspection or regulatory bodies that control the use of the GI in the specified region.
+<br>•	Applicant Details: Complete names and addresses of all applicants. If there are numerous producers, a collective reference can be made.
+<br>•	Address for Service in India: The applicant must have a valid address for communication within India.
+<br>•	Filing through Agent: The application can be filed by a legal practitioner or a registered agent.
+<br>•	Prescribed Fee: The application must be accompanied by the prescribed fee.
+</p>
+
+
+<p id="step2">
+Step 2 & 3: Preliminary Scrutiny and Examination
+<br>•	Preliminary Scrutiny: The Geographical Indications Registry will examine the application for any deficiencies. The applicant must rectify these within one month of receiving communication.
+<br>•	Examination of Statement of Case: A consultative group of experts, knowledgeable in the subject matter, will assess the accuracy of the information provided in the statement of case.
+<br>•	Examination Report: An Examination Report will be issued, outlining any concerns or requiring further information.
+</p>
+
+
+<p id="step4">
+Step 4: Show Cause Notice
+<br>•	If the Registrar has any objections to the application, a show-cause notice will be issued, stating the reasons for the objections.
+<br>•	The applicant must respond to the notice within two months or request a hearing.
+<br>•	The Registrar's decision will be communicated to the applicant.
+<br>•	The applicant can appeal the decision within one month of being served.
+<br>•	The Registrar has the power to withdraw an application accepted in error after providing an opportunity for a hearing.
+</p>
+
+<p id="step5">
+Step 5: Publication in the Geographical Indications Journal
+<br>•	Once an application is accepted, it will be published in the Geographical Indications Journal within three months.
+</p>
+
+<p id="step6">
+Step 6: Opposition to Registration
+<br>•	Any person can file a notice of opposition within three months (extendable by another month 1 upon request made before the initial three months expire) against the GI application published in the Journal.   
+<br>•	The Registrar will serve a copy of the opposition notice to the applicant.
+<br>•	The applicant must file a counter-statement within two months. Failure to do so may lead to the application being considered abandoned.
+<br>•	A copy of the counter-statement will be provided to the opposing party.
+<br>•	Both parties will then submit evidence through affidavits and supporting documents.
+<br>•	A hearing will be scheduled for the case.
+</p>
+
+<p id="step7">
+Step 7: Registration
+<br>•	If the application is accepted (either without opposition or after resolving opposition), the Registrar will register the geographical indication.
+<br>•	The date of filing the application is considered the date of registration.
+<br>•	The Registrar will issue a registration certificate with the seal of the Geographical Indications Registry to the applicant.
+</p>
+
+<p id="step8">
+Step 8: Renewal
+<br>•	A registered GI is valid for ten years and can be renewed upon payment of the renewal fee.
+</p>
+
+<p id="step9">
+Step 9: Additional Protection to Notified Goods
+<br>•	The Act provides for additional protection for goods notified by the Central Government.
+</p>
+
+ <br>
+</div>
+    
+ <div>
+    <p style="color: #000;">
+    Traditional Knowledge
+<br><i>Traditional Knowledge (TK) registration in India aims to protect age-old practices, skills, and cultural expressions developed by indigenous communities. These include herbal medicine, agricultural methods, handicrafts, and folklore passed down through generations. To prevent misuse and biopiracy, initiatives like the Traditional Knowledge Digital Library (TKDL) and legal frameworks under the Biodiversity Act, 2002 have been established. These help document and protect TK while ensuring benefit-sharing with the communities. Registering and safeguarding TK not only preserves India’s rich cultural heritage but also promotes sustainable development and recognition for the invaluable contributions of traditional knowledge holders.
+</i>
+    </p>
+
+ </div>
+{% endblock %}
+

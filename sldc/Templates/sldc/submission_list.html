@@ -1,0 +1,84 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Your submissions{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'sldc/css/sldc.css' %}">
+
+<div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable"  onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable"> Services </button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'sldc:sldc_submission' %}'">new sldc</button>
+                    
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+{% endblock %}
+{% block content %}
+
+
+
+    
+<div class="recent-blogs">
+   <h2>Approved sldcs</h2>
+    <p>Below are the sldc submisions</p>
+
+    {% if sldcs %}
+    <div class="blog-list">
+        {% for sldc in sldcs %}
+        <div class="blog-item" onclick="window.location.href='{% url 'sldc:view_recent' sldc.title %}'">
+
+                    <h3>{{ sldc.title }}</h3>
+                    <p><strong>Submitted by:</strong> {{ sldc.name }} {{ sldc.surname }}</p>
+                    <p><strong>Status:</strong>{{sldc.status}}</p>
+                    <hr>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No sldc submission</p>
+    {% endif %}
+</div>
+        <hr>
+
+
+
+
+{% endblock %}
+

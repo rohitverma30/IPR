@@ -1,0 +1,84 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Staff page{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'patent/css/patent.css' %}">
+
+<div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable"  onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable"> Services </button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'patent:patent_submission' %}'">new patent</button>
+                    
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+{% endblock %}
+{% block content %}
+
+
+
+    
+<div class="recent-blogs">
+   <h2>waiting list of patents</h2>
+    <p>Below are the patent submisions</p>
+
+    {% if patents %}
+    <div class="blog-list">
+        {% for patent in patents %}
+        <div class="blog-item" onclick="window.location.href='{% url 'patent:staff_submission' patent.title %}'">
+
+                    <h3>{{ patent.title }}</h3>
+                    <p><strong>Submitted by:</strong> {{ patent.name }} {{ patent.surname }}</p>
+                    <p><strong>Status:</strong>{{patent.status}}</p>
+                    <hr>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No patent submission</p>
+    {% endif %}
+</div>
+        <hr>
+
+
+
+
+{% endblock %}
+

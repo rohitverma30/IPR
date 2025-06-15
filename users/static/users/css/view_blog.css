@@ -1,0 +1,276 @@
+h1 {
+            margin: 2%;
+            margin-top: 10%;
+            text-align: left;
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: #ffffff;
+            
+            letter-spacing: 1.2px;
+            animation: fadeIn 1s ease-in-out;
+            font-family: 'CustomFont', serif;
+        }
+
+h2 {
+            margin: 2%;
+            margin-top: 10%;
+            text-align: left;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            
+            letter-spacing: 1.2px;
+            animation: fadeIn 1s ease-in-out;
+            font-family: 'CustomFont', serif;
+        }
+    .recent-blogs {
+        padding: 20px;
+        background-color: var(--background-color);
+    }
+
+    .recent-blogs h2 {
+        text-align: center;
+        color: rgb(6,36,67);
+        margin-bottom: 20px;
+        
+    }
+
+    .blog-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .blog-item {
+        background-color: var(--button-color);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .blog-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .blog-item h3 {
+        margin-top: 2%;
+        margin-bottom: 1%;
+        margin-left: 0%;
+        font-size: 1.75em;
+        color:rgb(6,36,67);
+    }
+
+    .blog-item p {
+        margin: 10px 0 0;
+        color: rgb(6,36,67);
+        overflow: hidden;
+    }
+.search-container {
+        position: relative;
+        width: 300px;
+    }
+
+    .searchBox {
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+    }
+.container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('/static/users/img/lady-justice.jpg');
+    background-size: cover;
+    width: auto;
+    height: 650px;
+    z-index: -1;
+  vertical-align: bottom;
+}
+
+.container img{
+    margin: 1%;
+    width: 100%;
+}
+
+.side-container {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    width: 100%;
+    vertical-align: middle;
+    padding-top: 5%;
+    border-radius: 5%;
+    margin-top: 2.5%;
+    margin: 1%;
+    vertical-align: bottom;
+}
+
+.center {
+    width: 75%;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5%;
+    vertical-align: middle;
+}
+
+.side-container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin-top: 3%;
+}
+
+.side {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+
+    resize: horizontal;
+}
+.side img{
+width: 100%;
+margin: 0%;
+}
+
+.blur{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: #ffeeee51;
+    z-index: 1;
+    opacity: 100%;
+    width: 300px;
+    shape-margin: 10%;
+
+    width: 50%;
+
+    justify-content: center;
+    align-items: center;
+    
+
+    height: auto;
+  vertical-align: bottom;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2{
+font-size: 1.8rem;
+    }
+    .container {
+        flex-direction: column;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .side-container, .side-container1 {
+        flex: 1 1 100%;
+        width: auto;
+    }
+
+    h1 {
+        font-size: clamp(1.8rem, 3vw, 3rem);
+    }
+
+    .placardset {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .placards {
+        max-width: 80%;
+    }
+
+    .mid hr {
+        width: 90%;
+    }
+
+    .mid p {
+        width: 90%;
+        font-size: 1rem;
+    }
+    .vertical-content p{
+        width: 100%;
+    }
+
+    .placard-section {
+        width: 100%;
+        padding: 0%;
+    }
+      .scroll-container p {
+    min-width: 120px;
+    font-size: 14px; /* Adjust text size for smaller screens */
+  }
+  .side-container{
+      display: inline;
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .blur {
+        width: 90%;
+        margin: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .side-container, .side-container1 {
+        width: 100%;
+    }
+
+    .placard-section {
+        width: 100%;
+        padding: 0%;
+    }
+
+
+    h2 {
+        font-size: 1.8rem;
+    }
+h1 {
+        font-size: 1.8rem;
+    }
+    p{
+      font-size: .9rem;
+    }
+
+    .vertical-content p{
+        width: 100%;
+    }
+
+    .scroll-container {
+    gap: 5px; /* Reduce spacing between steps */
+  }
+  
+  .scroll-container p {
+    min-width: 100px;
+    font-size: 12px;
+  }
+
+.side-container{
+      display: inline;
+    }
+.card{
+    padding: 1%;
+}
+}

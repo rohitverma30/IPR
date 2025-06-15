@@ -1,0 +1,78 @@
+{% extends 'users/base.html' %}
+{%load static%}
+{% block title %}Not logged in{% endblock %}
+{%block header%}
+<style>
+    /* Accessibility focus styles */
+    
+
+    /* Recent blogs section */
+    .recent-blogs {
+        padding: 20px;
+        background-color: #F9F1E5;
+    }
+
+    .recent-blogs h2 {
+        text-align: center;
+        color: rgb(6,36,67);
+        margin-bottom: 20px;
+    }
+
+    .blog-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .blog-item {
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .blog-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .blog-item h3 {
+        margin: 0;
+        color:rgb(6,36,67);
+    }
+
+    .blog-item p {
+        margin: 10px 0 0;
+        color: #333;
+    }
+</style>
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options">
+                    
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="alert alert-warning">
+    <h2>{{ message }}</h2>
+    <p>Please <a onclick="window.location.href='{% url 'users:login' %}'">log in</a> to continue.</p>
+</div>
+{% endblock %}

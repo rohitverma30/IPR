@@ -1,0 +1,66 @@
+{% extends 'users/base.html' %}
+{%load static%}
+{% block title %}Login{% endblock %}
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/login.css' %}">
+<div class="top">
+    <div class="logo">
+        <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+    </div>
+    <div class="menu">
+
+        <div class="expandable-container">
+            <button class="expandable" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            
+        </div>
+
+        <div class="expandable-container">
+            <button class="expandable">Blogging</button>
+            <div class="options">
+                <button aria-label="Write Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">Write Blog</button>
+                <button aria-label="Manage Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">Manage Blog</button>
+                <button aria-label="View Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">View Blog</button>
+            </div>
+        </div>
+    
+        <div class="expandable-container">
+            <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+        </div>
+    
+    
+        <div class="expandable-container">
+            <button class="expandable">Sign Up</button>
+            <div class="options">
+                <button aria-label="Create Account" onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                
+            </div>
+        </div>
+        <div class="expandable-container">
+            <button class="expandable" >User</button>
+            <div class="options" id="menu">
+                <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                 
+                <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+{% block content %}
+    <div class="login-container">
+        
+        <div class="login">
+            <h1>Login</h1>
+        <hr>
+            <form method="POST" class="Loginform">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="Loginform_button">{% block button_text %}Login{% endblock %}</button>
+            </form>
+        </div>
+
+    </div>
+
+    
+{% endblock %}

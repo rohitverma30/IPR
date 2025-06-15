@@ -1,0 +1,98 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Staff page{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'sldc/css/sldc_form.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+            <div class="expandable-container">
+                <button class="expandable" >Features</button>
+                <div class="options">
+                    <button aria-label="new sldc" onclick="window.location.href='{% url 'users:write_blog' %}'">Write Blog</button>
+                    <button aria-label="view sldcs" onclick="window.location.href='{% url 'users:manage_blog' %}'">Manage Blog</button>
+                    
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >Log In</button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'users:login' %}'">Email Login</button>
+                    
+                </div>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >Sign Up</button>
+                <div class="options">
+                    <button aria-label="Create Account" onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    
+                </div>
+            </div>
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div style="display: flex; flex-direction: row; margin: auto;">
+
+<div class="login-container">
+
+
+<div class="login">
+  <h1>sldc inquiry info</h1>
+  <hr>
+  <p>Email: 
+    {{email}}
+   </p>
+
+    <p>Status: 
+    {{status}}</p>
+  </div>
+
+  </div>
+    <div class="login-container">
+        
+        <div class="login">
+  <h1>sldc status update</h1>
+
+<hr>
+    <form method="post" class="Loginform">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="Loginform_button">Submit</button>
+    </form>
+        </div>
+    
+
+    </div>
+  
+    
+</div>
+{% endblock %}
+

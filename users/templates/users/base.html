@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}agastya IPR{% endblock %}</title>
+    <link rel="icon" href="{% static 'users/img/favicon.ico' %}" type="image/x-icon">
+<link rel="apple-touch-icon" href="{% static 'users/img/favicon.ico' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/base.css' %}">
+</head>
+<body>
+    <header>
+        {% block header %}
+        
+        {% endblock %}
+    </header>
+    <main>
+        {% block content %}
+
+        
+        {% endblock %}
+    </main>
+    <footer>
+        {% block footer %}© 2025 Agastya IPR
+        <div class="total">
+
+<div class="our-services">
+        <h3>Our services</h3>
+<p class="foot-p">
+<br> Patent filings
+<br> Trademark registrations 
+<br> Copyright registrations
+</p>
+<br>
+
+<h3>
+    Our other services
+</h3>
+<p class="foot-p">
+<br> Design registrations
+<br> Semiconductor Integrated Circuits Layout Design (SICLD) registration
+<br> Geographical Indications (GI) registrations
+</p>
+
+
+
+
+
+        </div>
+
+<div class="our-services">
+<h3>
+Contact us at
+</h3> 
+<p class="foot-p">
+<br>+91-8586984605
+<br>or
+<br>contact@agastyaipr.com
+<br>Address:  A-84, First Floor, Defence Colony, New Delhi- 110024
+</p>
+      </div>
+
+        </div>
+        <p class="foot-p" style="text-align: center;">
+<br> Other Intellectual Property Rights related services.
+
+<br>Agastya IPR also defends its client’s rights whenever their IPRs are being infringed.
+
+</p>
+        {% endblock %}
+    </footer>
+</body>
+</html>

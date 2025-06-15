@@ -1,0 +1,114 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}{{ username }}'s Blogs{% endblock %}
+
+
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/view_blog.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+          <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'patent:patent_brief' %}'">Patent</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'trademark:trademark_brief' %}'">Trademark</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Other Services</button>
+                <div class="options">
+                    <button aria-label="Copyright" onclick="window.location.href='{% url 'copyright:copyright_brief' %}'">Copyright</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:all_blogs' %}'">Blog</button>
+                    <button aria-label="Sldc" onclick="window.location.href='{% url 'sldc:sldc_brief' %}'">SICLD</button>
+                    <button aria-label="GI" onclick="window.location.href='{% url 'GI:GI_brief' %}'">GI</button>
+                    <button aria-label="design" onclick="window.location.href='{% url 'design:design_brief' %}'">Design</button>
+                    </div>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Blog</button>
+                <div class="options">
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">Write blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:manage_blog' %}'">Manage blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:view_blog' %}'">View blog</button>
+                    
+                  </div>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >About us</button>
+                <div class="options" id="menu">
+                    <button onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+                    <button onclick="window.location.href='{% url 'users:contact_us' %}'">Contact us</button>
+                    <button onclick="window.location.href='{% url 'users:termsconditions' %}'">Terms & conditions</button>
+                </div>
+            </div>
+            
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="blur">
+        <div class="side-container">
+            <div class="center">
+            <h1>view blogs</h1>
+            <p>In	singly	linked	lists	and	doubly	linked	lists,	the	end	of	lists	are	indicated	with	NULL	value.	But
+        circular	linked	lists	do	not	have	ends.</p>
+            <hr>
+            <br>
+            <button class="expandable" style="width: 35%;"> next</button>
+</form>
+</div>
+        </div>
+
+        
+
+        </div>
+        
+        
+
+    </div>
+</div>
+
+
+    <div class="recent-blogs">
+        <h2>Recent Blogs</h2>
+        <div class="blog-list" id="results">
+            
+            {% for info in Blogs %}
+            <div class="blog-item">
+                <h3 onclick="window.location.href='{% url 'users:view_selected' info.id %}'">{{info.title}}</h3>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+
+<script>
+
+    </script>
+{% endblock %}
+

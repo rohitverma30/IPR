@@ -1,0 +1,62 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}{{ Blogs.username }}'s Blogs{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/render_blog.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+            <div class="expandable-container">
+                <button class="expandable">Blogging</button>
+                <div class="options">
+                    <button aria-label="Write Blog" onclick="window.location.href='{% url 'users:write_blog' %}'">Write Blog</button>
+                    <button aria-label="Manage Blog" onclick="window.location.href='{% url 'users:manage_blog' %}'">Manage Blog</button>
+                    <button aria-label="View Blog" onclick="window.location.href='{% url 'users:view_blog' %}'">View Blog</button>
+                </div>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+        
+            <div class="expandable-container">
+                <button class="expandable">User</button>
+                <div class="options">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+    <div class="recent-blogs">
+        <h2>Manage your Blogs</h2>
+        <div class="blog-list">
+            
+            {% for info in Blogs %}
+            <div class="blog-item">
+                <h3 onclick="window.location.href='{% url 'users:edit_blog' info.id %}'">{{info.title}}</h3>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+{% endblock %}
+

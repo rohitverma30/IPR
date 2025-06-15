@@ -1,0 +1,207 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Copyright{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'copyright/css/copyright_brief.css' %}">
+
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="new copyright" onclick="window.location.href='{% url 'copyright:copyright_submission' %}'">new copyright</button>
+                    <button aria-label="view copyrights" onclick="window.location.href='{% url 'copyright:view_copyrights' %}'">view copyrights</button>
+                    <button aria-label="submissions" onclick="window.location.href='{% url 'copyright:submission_list' %}'">Submissions</button>
+                
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<!--
+<div class="image-container">
+        {% if random_image %}
+        <img src="{{ random_image.image.url }}" alt="Random Image">
+    {% else %}
+       <img src="{% static 'copyright\img\random-image-related (1).png' %}" alt="Main Image" class="main-image">
+    {% endif %}
+        
+        <h1 class="top-right-heading">Your Heading</h1>
+        <button class="bottom-left-button">
+            <img src="{% static 'copyright\img\scroll.png' %}" alt="Button Image">
+        </button>
+    </div>
+    
+
+        <section id="copyrights">
+            <h1>Understanding copyrights</h1>
+            <p>xyz working</p>
+        </section>
+
+-->
+        <div class="container">
+  
+<div class="image-container">
+        {% if random_image %}
+        <img src="{{ random_image.image.url }}" alt="Random Image">
+    {% else %}
+       <img src="{% static 'copyright\img\copyright_main.jpg' %}" alt="Main Image" class="main-image">
+    {% endif %}
+        
+    </div>
+   
+        </div>
+
+<div class="container">
+    
+        
+        <section class="center">
+            <div class="vertical-content">
+                <h1>Understanding copyrights</h1>
+                <p>Copyright registration is a vital step in protecting original creative works such as books, music, films, software, artwork, and more. While copyright protection exists automatically upon the creation of a work, registering it with the appropriate authority—such as the Copyright Office in India—provides legal evidence of ownership and strengthens your rights in case of infringement.
+The registration process involves submitting an application form along with a copy of the work and paying the prescribed fee. Once approved, the author or creator receives a copyright certificate that serves as proof of authorship and establishes the date of creation.
+A registered copyright allows the owner to reproduce, distribute, perform, display, and license their work. It also enables them to take legal action against unauthorized use or reproduction. In many jurisdictions, statutory damages and legal costs can only be claimed if the copyright is registered.
+For artists, writers, musicians, designers, and software developers, copyright registration is a smart and cost-effective way to protect intellectual assets. It adds credibility, helps enforce rights globally through international treaties, and plays a key role in building and monetizing a creative brand. Secure your work today with proper copyright registration.
+</p>
+                
+            </div>
+        </section>
+        <div class="side-container">
+            <aside class="side"><img src="{% static 'users/img/advocate.jpg' %}">
+            <p>Want to file a copyright</p>
+            </aside>
+            <button class="expandable" onclick="window.location.href='{% url 'copyright:copyright_submission' %}'">File for your copyright</button>
+        </div>
+    </div>
+    <div  class="mid-top">
+        <h2 style="color: white;">Steps for copyright application</h2>
+    <div>
+            
+    <div class="mid">
+    
+<section class="scroll-wrapper">
+            <div class="scroll-container">
+                <div class="placardset">
+                    <div class="placards" >
+                        <a href="#step1">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 1: Prepare the Necessary Documents</p>
+                        
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="placards" >
+                        <a href="#step2">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p>Step 2: File the Copyright Application</p>
+                        </a>
+                        
+                        
+                    </div>
+                    <div class="placards" >
+                        <a href="#step3">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 3: Examination</p>
+                        </a>
+                        
+                    </div>
+
+                    <div class="placards">
+                        <a  href="#step4">
+                            <img src="{% static 'users/img/logo.jpg' %}">
+                        <p> Step 4: Registration</p>
+                        </a>
+                        
+                    </div>
+
+                    
+                </div>
+                
+            </div>
+        </section>
+        
+        </div>
+
+    </div>
+   
+    </div>
+    <div style="justify-content: center; align-items: center; margin: auto; width: 80%;">
+        
+     <h2 style="margin: 3%;">Steps for copyright application
+</h2>
+
+
+        
+     <p id="step1">Step 1: Prepare the Necessary Documents
+<br>Gather all the required documents along with basic details of the applicants, which generally include:
+<br>•	Copies of the Work: 
+<br><i>o	Published works: Three copies.</i>
+<br><i>o	Unpublished works: Two copies of the manuscript.</i>
+<br><i>o	For artistic works: Two copies.</i>
+<br><i>o	For sound recordings/cinematograph films: Two copies.</i>
+<br><i>o	For software: Source code and object code (first 10 and last 10 pages, or entire code if less than 20 pages).</i>
+<br>•	Nature of the Applicant's Interest in the Copyright: Indicate whether the applicant is the author, publisher, owner, assignee, etc.
+<br>Steps 2: Power of Attorney: If the application is filed through an attorney, an original Power of Attorney signed by the applicant and accepted by the attorney is required. Power  of Attorney is attached here.
+</p>
+
+
+
+
+<p id="step2">Step 2: File the Copyright Application
+<br>You can file the application either online through the official Copyright Office website or physically by post. Online filing is now the preferred and more efficient method.
+<br>Filing Fee: The applicable government fee, which varies based on the type of work. Payment can be made online or via Demand Draft/Indian Postal Order favouring the "Registrar of Copyrights Payable at New Delhi."
+</p>
+
+<p id="step3">
+Step 3: Examination
+<br>Once the application is filed and a Diary Number is issued, there is a mandatory waiting period of 30 days for any objections to be filed by third parties.
+<br><i>•	No Objections: If no objections are received within 30 days, the application is scrutinized by the Copyright Examiner for any discrepancies. If no discrepancies are found, the registration process moves forward.
+</i>
+<br><i>•	Objections Received: If any objection is filed, the Copyright Office will notify both the applicant and the objector and may schedule a hearing to resolve the issue.</i>
+</p>
+
+<p id="step4">Step 4: Registration
+<br>If there are no objections, or if the objections are resolved after a hearing, and the examiner finds the application to be in order, the Registrar of Copyrights will register the work and issue a Copyright Registration Certificate. The details of the registered work will also be entered in the Register of Copyrights.</p>
+
+
+
+</div>
+    
+
+{% endblock %}
+

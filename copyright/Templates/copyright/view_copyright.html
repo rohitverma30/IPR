@@ -1,0 +1,90 @@
+{% extends 'users/base.html' %}
+{%load static%}
+{%block title %} {{blogs.title}} {%endblock%}
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'copyright/css/view_copyright.css' %}">
+
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable"  onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable"> Services </button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'copyright:copyright_submission' %}'">new copyright</button>
+                    
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+{% endblock %}
+{% block content %}
+
+
+
+<div class="blog-section">
+    <div class="blog-header">
+     
+        
+    </div>
+    
+    
+   <p > {{copyrights.name}}</p>
+        <p >Approved by: {{copyrights.verified_by}}</p>
+
+            <p >{{ copyrights.submitted_at }}</p>
+
+
+
+    <div class="blog-title">
+
+        <h1>{{ copyrights.title }}</h1>
+    </div>
+    <div>
+        <h3><b>{{ copyrights.description }}</b></h3>
+    </div>
+    <hr style="margin-bottom: 2.5%; margin-top: 1%;">
+
+    <div class="blog-image">
+        {% if random_image %}
+        <img src="{{ random_image.image.url }}" alt="Random Image">
+    {% else %}
+       <img src="{% static 'copyright\img\random-image-related (1).png' %}" alt="Main Image" class="main-image">
+    {% endif %}
+    </div>
+
+    <div class="blog-content">
+        <p>{{ copyrights.content }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+
+    * {box-sizing: border-box}
+body {font-family: 'Times New Roman', Times, serif; margin:0}
+
+img {
+    width: 100%;
+    height: auto;
+}
+small{
+    color: rgb(255, 0, 0);
+}
+
+h1 {
+            margin: 2%;
+            margin-top: 3%;
+            text-align: center;
+            font-family: 'CustomFont', serif;
+            width: auto;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #333;
+            letter-spacing: 1.2px;
+            animation: fadeIn 1s ease-in-out;
+        }
+    
+.random{
+    width: 24%;
+}
+.login-container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-color);
+        
+        }
+
+        .login {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 200%;
+            max-width: 600px;
+            
+        }
+
+        .Loginform {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            
+            
+        }
+        
+
+        .Loginform label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .Loginform input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .Loginform textarea{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .Loginform_button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .Loginform_button:hover {
+            background-color: darkblue;
+        }
+
+        
+        @media (max-width: 768px) {
+                h2 {
+        font-size: 1.8rem;
+    }
+h1 {
+        font-size: 1.8rem;
+    }
+    p{
+      font-size: .9rem;
+    }
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .loginform {
+                width: 90%;
+            }
+        }

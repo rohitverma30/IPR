@@ -1,0 +1,84 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Staff page{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'trademark/css/trademark.css' %}">
+
+<div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable"  onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+                
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable"> Services </button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'trademark:trademark_submission' %}'">new trademark</button>
+                    
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+{% endblock %}
+{% block content %}
+
+
+
+    
+<div class="recent-blogs">
+   <h2>waiting list of trademarks</h2>
+    <p>Below are the trademark submisions</p>
+
+    {% if trademarks %}
+    <div class="blog-list">
+        {% for trademark in trademarks %}
+        <div class="blog-item" onclick="window.location.href='{% url 'trademark:staff_waiting' trademark.title %}'">
+
+                    <h3>{{ trademark.title }}</h3>
+                    <p><strong>Submitted by:</strong> {{ trademark.name }} {{ trademark.surname }}</p>
+                    <p><strong>Status:</strong>{{trademark.status}}</p>
+                    <hr>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No trademark submission</p>
+    {% endif %}
+</div>
+        <hr>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,82 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}SICLD{% endblock %}
+
+
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'sldc/css/sldc.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+         <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            </div>
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="new sldc" onclick="window.location.href='{% url 'sldc:sldc_submission' %}'">New sldc</button>   
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+    
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+
+
+
+<div class="recent-blogs">
+   <h2>Approved sldcs</h2>
+   <form method="GET" action="{% url 'sldc:view_sldcs' %}">
+            <input type="text" name="q" placeholder="Search sldcs..." value="{{ query }}" style="width: 25%;height: 25px; border-radius: 6pc; padding: 1%; border-width: 0cap; background-color: hsl(208, 100%, 97%); opacity: 60%;">
+            
+            <button type="submit" class="expandable" style="width: 5%; margin-top: 1%;">Search</button>
+        </form>
+    <p>Below are the siclds that have been processed and approved by the admin.</p>
+
+    {% if sldcs %}
+    <div class="blog-list">
+        {% for sldc in sldcs %}
+        <div class="blog-item" onclick="window.location.href='{% url 'sldc:view_recent'  sldc.title %}'">
+            
+                    <h3>{{ sldc.title }}</h3>
+                    <p><strong>Submitted by:</strong> {{ sldc.name }} {{ sldc.surname }}</p>
+                    <p><strong>Verified by:</strong>{{sldc.verified_by}}</p>
+                    <hr>
+                
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No approved siclds available.</p>
+    {% endif %}
+</div>
+        <hr>
+
+
+
+
+{% endblock %}
+

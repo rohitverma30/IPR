@@ -1,0 +1,123 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Trademark{% endblock %}
+
+
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'trademark/css/trademark_brief.css' %}">
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+            <div class="expandable-container">
+                <button class="expandable" aria-label="Home" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            </div>
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="new Trademark" onclick="window.location.href='{% url 'trademark:trademark_submission' %}'">new Trademark</button>
+                    <button aria-label="view Trademark" onclick="window.location.href='{% url 'trademark:view_trademarks' %}'">view Trademark</button>
+                    <button aria-label="submissions" onclick="window.location.href='{% url 'trademark:submission_list' %}'">Submissions</button>
+                
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="blur">
+        <div class="side-container">
+            <div class="center">
+            <h1>Trademark</h1>
+            <p>Protect brand identity, including names, logos, slogans, and symbols that distinguish goods or services in the market. Trademark protection can last indefinitely if renewed.</p>
+            <hr>
+            <br>
+            <button class="expandable" style="width: 35%;" onclick="window.location.href='{% url 'trademark:trademark_submission' %}'">Next</button>
+        </div>
+
+        <img src="{% static 'users/img/trademark_side3.png' %}" class="side-img">
+        </div>
+        
+        
+
+    </div>
+</div>
+<div class="mid">
+<div class="center">
+    <h2>Overview</h2>
+    <hr style="width: 100%;">
+    <p>Trademark registration is essential for securing the unique identity of your business. A trademark can include a name, logo, tagline, symbol, or any combination that distinguishes your products or services from others in the marketplace. By registering a trademark, you gain exclusive legal rights to use that mark in commerce and prevent others from using confusingly similar marks.
+The process begins with a trademark search to ensure your mark is not already in use. Once cleared, an application is filed with the appropriate authority - the Indian Trademark Office. The application undergoes examination and, if approved, is published for opposition. If no objections arise, the mark is registered and protected for an initial period—typically 10 years—with the option for renewal.
+A registered trademark builds trust with customers, adds value to your brand, and provides a strong foundation for business expansion. It also becomes a valuable asset that can be licensed or sold. Whether you're launching a startup or managing an established business, trademark registration is a critical step in brand protection. Take action to legally protect your brand and secure your competitive edge in the market.
+</p>
+</div>
+</div>
+
+<div>
+        <div class="content">
+        <div class="card">
+            <img src="{% static 'copyright/img/court1.jpg' %}" alt="Modern Concept">
+            <h3>Phase 1: Pre-Filing</h3>
+            <p>1.	Trademark Search: Conduct a thorough search on the Intellectual Property India website  to check for existing similar trademarks. This helps avoid conflicts and increases the chances of successful registration.
+<br>2.	Choose a Unique Mark: Ensure your trademark is distinctive and not similar to existing trademarks. It should be capable of distinguishing your goods or services from those of others.
+<br>3.	Identify the Correct Class: Trademarks are categorized into 45 classes (Nice Classification). Determine the class(es) that accurately represent your goods and services.
+<br>4.	Prepare Necessary Documents: Gather required documents such as: 
+<br><i>o	Business registration proof (if applicable).</i>
+<br><i>o	Identity and address proof of the applicant.</i>
+<br><i>o	Trademark image or representation (if it's a logo or device mark).</i>
+<br><i>o	User affidavit (if claiming prior use).</i>
+<br><i>         o	Power of Attorney (if filing through an agent).</i>
+</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'copyright/img/court2.jpg' %}"alt="Innovative UI">
+            <h3>Phase 2: Filing the Application</h3>
+            <p>
+5.	File Form TM-A: This is the main application form for trademark registration. It can be filed online through the IP India portal or offline at the Trade Marks Registry office based on jurisdiction. Online filing is generally preferred for efficiency.
+<br>6.	Choose Filing Option: Decide whether to file as a single class or multi-class application.
+<br>7.	Pay the Application Fee: The fee varies based on the type of applicant (individual, startup, SME, other) and the mode of filing (online or offline).
+</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'copyright/img/court3.jpg' %}" alt="Responsive Layout">
+            <h3>Phase 3: Post-Filing</h3>
+            <p>
+8.	Examination: The Trademark Registry examines the application for any objections based on the Trademarks Act, 1999. This includes checking for similarity with existing marks and adherence to legal requirements.
+<br>9.	Examination Report: If objections are raised, an Examination Report is issued. The applicant needs to file a reply to these objections within a stipulated time (usually one month).
+<br>10.	Hearing (if required): If the Examiner is not satisfied with the reply, a hearing may be scheduled to present your case.
+<br>11.	Advertisement in the Trademark Journal: If the application is accepted (with or without objections being cleared), it is advertised in the Trademark Journal for a period of four months. This allows the public to file an opposition against the registration.
+<br>12.	Opposition (if any): Any aggrieved party can file a notice of opposition within four months of the trademark's publication in the Journal. If an opposition is filed, a legal process involving counter-statements, evidence, and hearings will follow.
+<br>13.	Registration: If there is no opposition, or if the opposition is decided in favor of the applicant, the trademark is registered. A Registration Certificate is issued, and the trademark is valid for 10 years from the date of application.
+<br>14.	Renewal: The trademark registration can be renewed every 10 years by paying the prescribed renewal fee.
+</p>
+        </div>
+    </div>
+    </div>
+
+<br>
+
+{% endblock %}
+

@@ -1,0 +1,80 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}GI inquiry{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'GI/css/GI_form.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                   <button aria-label="view GIs" onclick="window.location.href='{% url 'GI:view_GIs' %}'">View GIs</button>
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >Log In</button>
+                <div class="options">
+                    <button aria-label="Email Login" onclick="window.location.href='{% url 'users:login' %}'">Email Login</button>
+                    
+                </div>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" >Sign Up</button>
+                <div class="options">
+                    <button aria-label="Create Account" onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    
+                </div>
+            </div>
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+
+    <div class="login-container">
+        
+        <div class="login">
+  <h1>GI Submission Form</h1>
+<hr>
+    <small>**Please ensure all details are accurate, especially your email, as the admin will reply via email.**</small>
+
+    <form method="post" class="Loginform">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="Loginform_button">Submit</button>
+    </form>
+        </div>
+    
+
+    </div>
+    
+
+{% endblock %}
+

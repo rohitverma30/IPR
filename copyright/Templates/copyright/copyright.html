@@ -1,0 +1,79 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Copyright list{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'copyright/css/copyright.css' %}">
+
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+            <div class="expandable-container">
+                <button class="expandable" >Features</button>
+                <div class="options">
+                    <button aria-label="new copyright" onclick="window.location.href='{% url 'users:write_blog' %}'">Write Blog</button>
+                    <button aria-label="view copyrights" onclick="window.location.href='{% url 'users:manage_blog' %}'">Manage Blog</button>
+                    
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+
+
+<div class="recent-blogs">
+    
+   <h2>Approved copyrights</h2>
+   <form method="GET" action="{% url 'copyright:view_copyrights' %}">
+            <input type="text" name="q" placeholder="Search copyrights..." value="{{ query }}" style="width: 25%;height: 25px; border-radius: 6pc; padding: 1%; border-width: 0cap; background-color: hsl(208, 100%, 97%); opacity: 60%;">
+            
+            <button type="submit" class="expandable" style="width: s5%; margin-top: 1%;">Search</button>
+        </form>
+    <p>Below are the copyrights that have been processed and approved by the admin.</p>
+
+    {% if copyrights %}
+    <div class="blog-list">
+        {% for copyright in copyrights %}
+        <div class="blog-item" onclick="window.location.href='{% url 'copyright:view_recent'  copyright.title %}'">
+
+                    <h3>{{ copyright.title }}</h3>
+                    <p><strong>Submitted by:</strong> {{ copyright.name }} {{ copyright.surname }}</p>
+                    <p><strong>Verified by:</strong>{{copyright.verified_by}}</p>
+                    <hr>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No approved copyrights available.</p>
+    {% endif %}
+</div>
+     
+{% endblock %}
+

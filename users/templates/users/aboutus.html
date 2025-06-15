@@ -1,0 +1,127 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block title %}About us{% endblock %}
+{%block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/aboutus.css' %}">
+
+
+        <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}';">
+        </div>
+        <div class="menu">
+          <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'patent:patent_brief' %}';">Patent</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'copyright:copyright_brief' %}';">Copyright</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:view_blog' %}';">Blog</button>
+                    <button aria-label="Sldc" onclick="window.location.href='{% url 'sldc:sldc_brief' %}';">SLDC</button>
+                    <button aria-label="GI" onclick="window.location.href='{% url 'GI:GI_brief' %}';">GI</button>
+                    <button aria-label="design" onclick="window.location.href='{% url 'design:design_brief' %}';">Design</button>
+                    <button aria-label="Trademark" onclick="window.location.href='{% url 'trademark:trademark_brief' %}';">Trademark</button>
+                </div>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Blog</button>
+                <div class="options">
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:write_blog' %}';">Write blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:manage_blog' %}';">Manage blog</button>
+                    <button aria-label="Blog" onclick="window.location.href='{% url 'users:view_blog' %}';">View blog</button>
+                    
+                  </div>
+            </div>
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:contact_us' %}';">Contact us</button>
+            </div>
+        
+            
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endblock %}
+    {% block content %}
+    <div  class="container">
+    
+    
+
+    
+    <div  class="block1">
+        <div  class="block2">
+            <img src="{% static 'users/img/about_us.jpg' %}" >
+            <div  class="right">
+
+            <h2 style="text-align: justify;">About Us</h2>
+            <hr style="color: white; width: 97.5%;">
+            <p >Agastya IPR is your dedicated resource for navigating the complex world of patents, trademarks, copyrights, trade secrets, design registration, and geographical indications registration. Based in New Delhi, India, our mission is to empower creators, innovators, and businesses with the knowledge and tools they need to protect and leverage their intellectual assets.
+        We understand that IPR can seem daunting. That's why Agastya IPR brings a user-friendly platform offering clear explanations, practical guidance, and up-to-date information on Indian and international IPR laws and procedures. Agastya IPR is a single window platform for all Intellectual Property Rights (IPRs) filings and registrations. Whether you're an individual inventor seeking patent protection, a start-up building your brand identity, or an established company managing a diverse IP portfolio, we are here to support you at every step.
+        Agastya IPR is founded by an IITian with a team of well-qualified professionals who are well-versed in all the nitty-gritty of IPR-related work. Our team comprises experienced professionals passionate about fostering innovation and creativity through effective IPR management. We are your trusted partner in your journey to secure and maximize the value of your intellectual property. Explore our resources, learn about your rights, and take control of your creative future with the IPR Hub.
+        </p>
+        <div  class="right-bottom">
+            
+        <p style="text-align: justify; padding: auto;  margin:1%;  border-radius: 100%; background-color: var(--hover-color); color:white; width: 2.5%; height: 2.5%;">{{ request.view_count }}</p>
+        <p style="padding-left: 2%; width: 95%; font-size: 1.2em; text-align: justify;">Views</p>
+        </div>
+        </div>
+        </div>
+
+<hr>
+
+    </div>
+  
+</div>
+<div style="background-color: var(--primary-color);">
+<h2 style="text-align: center; padding-top: 5%; ">Meet Our Team</h2>
+<hr style="width: 85%;">
+    
+<div class="member-sect">
+
+
+
+        <div class="placards-container">
+            {% for members in TeamMember %}
+        <div class="placard">
+            
+            <div class="placard-content">
+                <img src="{{members.profile_image.url }}" alt="Profile_img">
+                <div class="text">
+                    <p style="font-size: 2em;"><strong>{{members.name}}
+                    </strong></p>
+                    <p>{{ members.role }}</p>
+                    <p>{{members.bio}}</p>
+                    <hr style="color: white; margin-bottom: 2%; ">
+                </div>
+                
+            </div>
+            
+        </div>
+{% endfor %}
+        
+    </div>
+
+    </div>
+</div>
+    <br>
+
+{% endblock %}

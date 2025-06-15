@@ -1,0 +1,127 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Design registration{% endblock %}
+
+
+{%block header%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'design/css/design_brief.css' %}">
+
+    <div class="top">
+        <div class="logo">
+            <img src="{% static 'users/img/logo.jpg' %}" alt="Logo" onclick="window.location.href='{% url 'users:home' %}'">
+        </div>
+        <div class="menu">
+
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:home' %}'">Home</button>
+            </div>
+
+            <div class="expandable-container">
+                <button class="expandable" >Services</button>
+                <div class="options">
+                    <button aria-label="new design" onclick="window.location.href='{% url 'design:design_submission' %}'">New design</button>
+                    <button aria-label="view designs" onclick="window.location.href='{% url 'design:view_designs' %}'">View designs</button>
+                    <button aria-label="submissions" onclick="window.location.href='{% url 'design:submission_list' %}'">Submissions</button>
+                
+                   
+                </div>
+            </div>
+            
+        
+            <div class="expandable-container">
+                <button class="expandable" onclick="window.location.href='{% url 'users:about_us' %}'">About us</button>
+            </div>
+        
+            
+            <div class="expandable-container">
+                <button class="expandable" >User</button>
+                <div class="options" id="menu">
+                    {% if not request.user.is_authenticated %}
+                    <button onclick="window.location.href='{% url 'users:register' %}'">Create Account</button>
+                    <button onclick="window.location.href='{% url 'users:login' %}'">Login</button>
+                     {% else %}
+                    <button onclick="window.location.href='{% url 'users:logout' %}'">Logout</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="blur">
+        <div class="side-container">
+            <div class="center">
+            <h1>Design Registration</h1>
+            <p>Make sure a product's shape, pattern, or color scheme is protected and distinctive by covering its visual appeal or design.</p>
+            <hr>
+            <br>
+            <button class="expandable" style="width: 35%;"onclick="window.location.href='{% url 'design:design_submission' %}'">New design</button>
+        </div>
+
+        <img src="{% static 'users/img/trademark_side2.png' %}" class="side-img">
+        </div>
+        
+        
+
+    </div>
+</div>
+<div class="mid">
+<div class="center">
+    <h2>Overview</h2>
+    <hr style="width: 100%;">
+    <p>Design registration is a form of intellectual property protection that safeguards the visual appearance or aesthetic features of a product. This includes the shape, configuration, pattern, ornamentation, or composition of lines or colours applied to any article—whether in two-dimensional or three-dimensional form. By registering a design, creators obtain exclusive rights to use and commercialize their design for a specified period, typically 10 years, extendable to 5 years after renewal.
+The process starts with preparing detailed representations or images of the design, followed by filing an application with the relevant authority, such as the Indian Design Office. Once examined and approved, the design is published in the official journal, giving the owner exclusive rights and legal standing to take action against unauthorized use or imitation.
+Design registration is particularly valuable for industries like fashion, furniture, packaging, consumer products, and electronics, where product appearance plays a critical role in customer preference and market success. It not only deters design theft but also enhances the commercial value of the product.
+Protecting your design early through registration helps maintain originality, promotes brand identity, and gives you a competitive edge in the market. 
+Safeguard your creativity—register your design today.</p>
+</div>
+</div>
+
+
+<div>
+    <div class="content">
+
+    <div class="card">
+            <img src="{% static 'copyright/img/court8.jpg' %}" alt="Modern Concept">
+            <h3>Phase 1: Preparation and Filing</h3>
+            <p>
+1.	Design Search: Conduct a search at the Indian Patent Office (Designs Wing) or online databases to ensure your design is novel and not already registered. This step is crucial but not mandatory before filing.
+<br>2.	Prepare Representations: Create clear and accurate representations (drawings or photographs) of your design from various angles on A4 size paper. Ensure they clearly show the features for which protection is sought.
+<br>3.	Identify the Class: Classify your article according to the Locarno Classification system, which categorizes goods based on their nature and function.
+<br>4.	Prepare Application (Form-1): Fill out the application form (Form-1) with details of the applicant, article, and the novelty statement describing the unique visual features of your design.
+<br>5.	Statement of Novelty: Draft a specific statement highlighting the novel aspects of your design that you wish to protect.
+<br>6.	File the Application: Submit the application (Form-1) along with the representations, statement of novelty, and the prescribed fee to the Design Wing of the Indian Patent Office, either online or physically at their offices (Kolkata, Delhi, Mumbai, Chennai).
+<br>7.	Claim Priority (if applicable): If you have already filed a design application in a convention country, you can claim priority within six months of the earlier filing date.
+</p>
+        </div>
+
+    <div class="card">
+            <img src="{% static 'copyright/img/justitia3.jpg' %}" alt="Modern Concept">
+            <h3>Phase 2: Examination and Registration</h3>
+            <p>
+8.	Examination: The Patent Office examines the application for formal requirements and novelty. They may raise objections if the design is not new or lacks distinctiveness.
+<br>9.	Respond to Objections (if any): If objections are raised, you need to file a response within the stipulated time (usually six months, with a possible extension).
+<br>10.	Hearing (if required): If the Examiner is not satisfied with your response, a hearing may be scheduled.
+<br>11.	Acceptance and Registration: If the application is accepted, the design is registered, and a Certificate of Registration is issued.
+<br>12.	Publication: The registered design is then published in the Official Gazette.
+</p>
+        </div>
+
+    <div class="card">
+            <img src="{% static 'copyright/img/court10.png' %}" alt="Modern Concept">
+            <h3>Post-Registration:</h3>
+            <p>
+
+13.	Renewal: The initial registration is valid for ten years from the date of registration (or priority date, if applicable) and can be renewed for an additional period of five years by paying the renewal fee.
+   </div>
+    
+    </div>
+</div>
+
+{% endblock %}
+
